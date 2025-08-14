@@ -1,0 +1,39 @@
+.feedbackContainer {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 400px;
+}
+
+.feedbackList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feedbackList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 1.1rem;
+  font-weight: 500;
+color: #000;
+}
+
+.feedbackList li:last-child {
+  border-bottom: none;
+}
+
+.feedbackList span {
+  font-weight: bold;
+  color: #2d3748;
+  font-size: 1.2rem;
+}
+
+.positive{
+    color: green !important;
+}
