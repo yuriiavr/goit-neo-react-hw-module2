@@ -10,7 +10,7 @@ const Feedback = ({states: {good, bad, neutral, totalFeedback, positiveFeedbackP
             <li>Neutral: <span>{neutral}</span> </li>
             <li>Bad: <span>{bad}</span> </li>
             <li>Total Feedback: <span>{totalFeedback}</span> </li>
-            <li>Positive: <span style={positiveClass}>{positiveFeedbackPer}%</span> </li>
+            <li>Positive: <span style={positiveClass}>{positiveFeedbackPer}%</span></li>
         </ul>
     )
 }

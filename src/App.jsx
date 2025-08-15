@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Options from "./components/Options/Options";
 import Feedback from "./components/Feedback/Feedback";
+import Notification from "./components/Notification/Notification";
+import Description from "./components/Description/Description";
 
 function App() {
   const getStoredValue = (key, defaultValue) => {
@@ -20,12 +22,12 @@ function App() {
   const [bad, setBad] = useState(() => getStoredValue("bad", 0));
 
   useEffect(() => {
-    try{
-      localStorage.setItem('good', JSON.stringify(good));
-      localStorage.setItem('neutral', JSON.stringify(neutral));
-      localStorage.setItem('bad', JSON.stringify(bad));
-    } catch (error){
-      console.error("Can't download feedbacks", error)
+    try {
+      localStorage.setItem("good", JSON.stringify(good));
+      localStorage.setItem("neutral", JSON.stringify(neutral));
+      localStorage.setItem("bad", JSON.stringify(bad));
+    } catch (error) {
+      console.error("Can't download feedbacks", error);
     }
   }, [good, neutral, bad]);
 
@@ -51,22 +53,22 @@ function App() {
 
   const totalFeedback = good + neutral + bad;
 
-  const positiveFeedbackPer = Math.round((good / totalFeedback) * 100);
+  const positiveFeedbackPer = totalFeedback >= 1 ? Math.round((good / totalFeedback) * 100) : 0;
 
   return (
     <>
-      <h1 className="title">Sip Happens Café</h1>
-      <span className="description">
-        Please leave your feedback about our service by selecting one of the
-        options below.
-      </span>
-      <Options feedBackFunc={{ updateFeedback, resetFeedback }} />
+      <Description />
+      <Options
+        updateFeedback={updateFeedback}
+        resetFeedback={resetFeedback}
+        totalFeedback={totalFeedback}
+      />
       {totalFeedback >= 1 ? (
         <Feedback
           states={{ good, bad, neutral, totalFeedback, positiveFeedbackPer }}
         />
       ) : (
-        <span className="noFeedback">No feedback yet</span>
+        <Notification />
       )}
     </>
   );
